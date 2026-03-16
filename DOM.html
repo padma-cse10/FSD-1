@@ -1,0 +1,40 @@
+<html>
+<head>
+  <title>DOM</title>
+</head>
+<body align="center">
+  <h1 id="head1">hi</h1>
+  <h2 id="head2">hi all</h2>
+  <p class="para1">this is padma</p>
+  <p class="para2">and u</p>
+  <div id="container">
+    <p id="removeMe">I'll be removed</p>
+  </div>
+  <button onclick="msg()">click Me</button>
+  <script>
+    document.getElementById("head1").innerHTML = "hello";
+    document.getElementsByClassName("para1")[0].style.color = "magenta";
+    document.getElementsByTagName("p")[1].innerText = "padma";
+
+    let h3 = document.createElement("h3");
+    h3.innerHTML = "heading 3";
+    document.body.appendChild(h3);
+
+
+    let removeMe = document.getElementById("removeMe");
+    document.getElementById("container").removeChild(removeMe);
+
+  
+    document.getElementById("head2").setAttribute("style", "color: blue");
+    console.log(document.getElementById("head2").getAttribute("id"));
+
+  
+    document.getElementsByClassName("para2")[0].classList.add("newClass");
+
+ 
+    function msg() {
+      document.write("this is priya")
+    }
+  </script>
+</body>
+</html>
