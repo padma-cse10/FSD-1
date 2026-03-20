@@ -1,199 +1,122 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>EcoDrone Solutions</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Padma Priya Projects</title>
+
+<!-- Font Awesome for icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
-
-body{
-font-family: Arial;
-margin:0;
-background:linear-gradient(to right,#eef2f3,#d9e4f5);
-color:#333;
+/* Animated Gradient Background */
+body {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background: linear-gradient(135deg, #667eea, #764ba2, #ff6ec4, #7873f5);
+  background-size: 400% 400%;
+  animation: gradientBG 15s ease infinite;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  color: white;
 }
 
-.container{
-width:85%;
-margin:auto;
-text-align:center;
-padding:20px;
+@keyframes gradientBG {
+  0% {background-position: 0% 50%;}
+  50% {background-position: 100% 50%;}
+  100% {background-position: 0% 50%;}
 }
 
-h1,h2,h3{
-color:#0a7a3c;
+/* Header Styling */
+header {
+  padding: 40px;
+  font-size: 36px;
+  font-weight: bold;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  margin: 20px auto;
+  width: fit-content;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
 }
 
-.row{
-display:flex;
-flex-wrap:wrap;
-justify-content:center;
-margin:30px 0;
+/* Grid Layout */
+.container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 25px;
+  padding: 40px;
+  max-width: 1100px;
+  margin: auto;
 }
 
-.col{
-flex:1;
-min-width:250px;
-margin:15px;
-padding:25px;
-background:white;
-border-radius:10px;
-box-shadow:0 4px 10px rgba(0,0,0,0.1);
+/* Card Styling */
+.card {
+  background: white;
+  color: black;
+  padding: 25px;
+  border-radius: 15px;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.25);
+  transition: transform 0.4s, box-shadow 0.4s;
 }
 
-.col img{
-width:90%;
-max-height:280px;
-object-fit:cover;
-border-radius:12px;
-box-shadow:0 4px 12px rgba(0,0,0,0.2);
+.card:hover {
+  transform: translateY(-8px) scale(1.07);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.35);
 }
 
-.gallery{
-overflow:hidden;
-background:white;
-padding:20px;
-border-radius:10px;
-box-shadow:0 4px 10px rgba(0,0,0,0.1);
+/* Link Styling */
+a {
+  text-decoration: none;
+  color: #764ba2;
+  font-weight: bold;
+  font-size: 18px;
+  transition: color 0.3s, border-bottom 0.3s;
 }
 
-/* moving image strip */
-
-.images{
-display:flex;
-width:max-content;
-animation:scroll 25s linear infinite;
+a:hover {
+  color: #667eea;
+  border-bottom: 2px solid #667eea;
 }
 
-.images img{
-width:200px;
-height:130px;
-object-fit:cover;
-margin:10px;
-border-radius:8px;
-box-shadow:0 3px 8px rgba(0,0,0,0.2);
-transition:transform .3s;
+/* Footer Styling */
+footer {
+  margin-top: 40px;
+  padding: 20px;
+  font-size: 14px;
+  background: rgba(255,255,255,0.1);
+  border-top: 1px solid rgba(255,255,255,0.3);
 }
-
-.images img:hover{
-transform:scale(1.1);
-}
-
-/* animation */
-
-@keyframes scroll{
-0%{
-transform:translateX(0);
-}
-100%{
-transform:translateX(-50%);
-}
-}
-
-footer{
-background:#0a7a3c;
-color:white;
-padding:15px;
-margin-top:30px;
-}
-
 </style>
 </head>
 
 <body>
 
+<header>
+  🌐 Padma Priya Thippa <br>
+  Web Technology Projects
+</header>
+
 <div class="container">
 
-<h1>EcoDrone Solutions</h1>
-<p><em>Smart Drone Technology for a Greener Planet</em></p>
-
-<div class="row">
-
-<div class="col">
-<img src="https://images.unsplash.com/photo-1508614589041-895b88991e3e">
-</div>
-
-<div class="col">
-<h3>Welcome</h3>
-<p>
-EcoDrone Solutions develops intelligent drones powered by AI to monitor forests,
-analyze crops and protect wildlife. Our technology helps governments,
-farmers and environmental organizations make smarter environmental decisions.
-</p>
-</div>
-
-</div>
-
-<h2>Our Drone Technology Gallery</h2>
-
-<div class="gallery">
-<div class="images" id="gallery"></div>
-</div>
-
-<div class="row">
-
-<div class="col">
-<h3>Company Details</h3>
-<p><b>Founded:</b> 2022</p>
-<p><b>Employees:</b> 35+</p>
-<p><b>Services:</b> Drone Monitoring, Smart Agriculture, Wildlife Tracking</p>
-</div>
-
-<div class="col">
-<h3>Mission & Vision</h3>
-<p><b>Mission:</b> Use drone technology to protect nature and improve agriculture.</p>
-<p><b>Vision:</b> Build a smarter greener world using AI powered drones.</p>
-</div>
-
-</div>
-
-<div class="row">
-
-<div class="col">
-<h3>Address</h3>
-<p>EcoDrone Solutions</p>
-<p>Hyderabad, Telangana</p>
-<p>India</p>
-</div>
-
-<div class="col">
-<h3>Contact</h3>
-<p><b>Email:</b> contact@ecodrone.com</p>
-<p><b>Phone:</b> +91 9876543210</p>
-</div>
-
-</div>
+  <div class="card"><a href="caculator.html"><i class="fas fa-calculator"></i> Calculator Project</a></div>
+  <div class="card"><a href="college.html"><i class="fas fa-university"></i> College Website</a></div>
+  <div class="card"><a href="DOM.html"><i class="fas fa-code"></i> DOM Example</a></div>
+  <div class="card"><a href="headings.html"><i class="fas fa-heading"></i> HTML Headings</a></div>
+  <div class="card"><a href="nature2.html"><i class="fas fa-leaf"></i> Nature Page</a></div>
+  <div class="card"><a href="ourself.html"><i class="fas fa-users"></i> About Us Page</a></div>
+  <div class="card"><a href="project.html"><i class="fas fa-lightbulb"></i> Mini Project</a></div>
+  <div class="card"><a href="tesla-clone.html"><i class="fas fa-car"></i> Tesla Clone</a></div>
+  <div class="card"><a href="college-faculty.html"><i class="fas fa-chalkboard-teacher"></i> College Faculty</a></div>
+  <div class="card"><a href="company-website.html"><i class="fas fa-building"></i> Company Website</a></div>
+  <div class="card"><a href="draw.html"><i class="fas fa-pencil-alt"></i> Drawing Page</a></div>
+  <div class="card"><a href="error.html"><i class="fas fa-exclamation-triangle"></i> Error Page</a></div>
+  <div class="card"><a href="sign.html"><i class="fa-brands  fa-windows"></i> MicroSoft Clone</a></div>
 
 </div>
 
 <footer>
-<p>© 2026 EcoDrone Solutions | All Rights Reserved</p>
+  © 2026 Padma Priya | Web Technology 🚀
 </footer>
-
-<script>
-
-let gallery=document.getElementById("gallery");
-
-let images=[
-
-"https://images.unsplash.com/photo-1472214103451-9374bd1c798e",
-"https://images.unsplash.com/photo-1501785888041-af3ef285b470",
-"https://images.unsplash.com/photo-1441974231531-c6227db76b6e",
-"https://images.unsplash.com/photo-1500530855697-b586d89ba3ee",
-"https://images.unsplash.com/photo-1508614589041-895b88991e3e"
-
-];
-
-/* duplicate images for smooth infinite scrolling */
-
-let allImages=images.concat(images);
-
-allImages.forEach(src=>{
-let img=document.createElement("img");
-img.src=src;
-gallery.appendChild(img);
-});
-
-</script>
 
 </body>
 </html>

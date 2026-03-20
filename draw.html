@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Surface Pro Clone</title>
+  <style>
+    /* General Layout */
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      font-family: Arial, sans-serif;
+    }
+
+    .surface-ui {
+      display: grid;
+      grid-template-rows: 50px 1fr;
+      height: 100vh;
+    }
+
+    /* Taskbar */
+    .taskbar {
+      background: #2d2d2d;
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 1rem;
+    }
+
+    /* Workspace */
+    .workspace {
+      background: #f5f5f5;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    /* App Window */
+    .app-window {
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      padding: 1rem;
+      animation: fadeIn 0.5s ease-in-out;
+    }
+
+    /* Canvas */
+    canvas {
+      border: 2px solid #333;
+      border-radius: 4px;
+      cursor: crosshair;
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    /* Tablet Mode */
+    .tablet .app-window {
+      width: 90%;
+      height: auto;
+    }
+
+    /* Desktop Mode */
+    .desktop .app-window {
+      width: 600px;
+    }
+  </style>
+</head>
+<body>
+  <div class="surface-ui desktop">
+    <!-- Taskbar -->
+    <header class="taskbar">
+      <span class="logo">Surface Pro UI</span>
+      <button id="modeToggle">Switch to Tablet Mode</button>
+    </header>
+
+    <!-- Workspace -->
+    <main class="workspace">
+      <div class="app-window">
+        <h2>Drawing App</h2>
+        <canvas id="draw" width="600" height="400"></canvas>
+      </div>
+    </main>
+  </div>
+
+  <script>
+    // Mode Toggle
+    const modeToggle = document.getElementById("modeToggle");
+    const surfaceUI = document.querySelector(".surface-ui");
+
+    modeToggle.addEventListener("click", () => {
+      if (surfaceUI.classList.contains("tablet")) {
+        surfaceUI.classList.remove("tablet");
+        surfaceUI.classList.add("desktop");
+        modeToggle.textContent = "Switch to Tablet Mode";
+      } else {
+        surfaceUI.classList.remove("desktop");
+        surfaceUI.classList.add("tablet");
+        modeToggle.textContent = "Switch to Desktop Mode";
+      }
+    });
+
+    // Drawing App
+    const canvas = document.getElementById("draw");
+    const ctx = canvas.getContext("2d");
+    let drawing = false;
+
+    canvas.addEventListener("mousedown", () => drawing = true);
+    canvas.addEventListener("mouseup", () => drawing = false);
+    canvas.addEventListener("mousemove", draw);
+
+    canvas.addEventListener("touchstart", () => drawing = true);
+    canvas.addEventListener("touchend", () => drawing = false);
+    canvas.addEventListener("touchmove", e => {
+      const touch = e.touches[0];
+      draw({ clientX: touch.clientX, clientY: touch.clientY });
+    });
+
+    function draw(e) {
+      if (!drawing) return;
+      ctx.fillStyle = "#000";
+      ctx.beginPath();
+      ctx.arc(e.clientX - canvas.offsetLeft, e.clientY - canvas.offsetTop, 2, 0, Math.PI * 2);
+      ctx.fill();
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,262 @@
+:root {
+  --ms-blue: #0067b8;
+  --text-dark: #1f1f1f;
+  --text-light: #616161;
+  --border: #e5e5e5;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+body {
+  background: #ffffff;
+  color: var(--text-dark);
+}
+
+/* ================= HEADER ================= */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 40px;
+  border-bottom: 1px solid var(--border);
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+
+.logo {
+  font-size: 18px;
+  font-weight: 600;
+  height:80px;
+  width:80px;
+}
+
+nav a {
+  text-decoration: none;
+  color: #262626;
+  font-size: 14px;
+  margin-right: 18px;
+}
+
+.header-right span {
+  margin-left: 20px;
+  font-size: 14px;
+}
+
+/* ================= HERO ================= */
+/* ================= SLIDER HERO ================= */
+.slider{
+  position:relative;
+  width:100%;
+  overflow:hidden;
+  background:#f5f5f5;
+}
+
+.slides{
+  display:flex;
+  width:300%;
+  transition:0.6s ease;
+}
+
+.slide{
+  width:100%;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:60px 80px;
+}
+
+.slide-text{
+  max-width:40%;
+}
+
+.slide-text h1{
+  font-size:40px;
+  margin-bottom:15px;
+}
+
+.slide-text p{
+  font-size:18px;
+  color:#444;
+  margin-bottom:20px;
+}
+
+.slide-text a{
+  background:#0067b8;
+  color:#fff;
+  padding:10px 20px;
+  text-decoration:none;
+  font-weight:600;
+}
+
+.slide img{
+  width:50%;
+}
+
+/* radio buttons */
+.slider input{
+  display:none;
+}
+
+#slide1:checked ~ .slides{
+  margin-left:0%;
+}
+#slide2:checked ~ .slides{
+  margin-left:-100%;
+}
+#slide3:checked ~ .slides{
+  margin-left:-200%;
+}
+
+/* dots */
+.navigation{
+  position:absolute;
+  bottom:20px;
+  left:50%;
+  transform:translateX(-50%);
+  display:flex;
+}
+
+.navigation label{
+  width:12px;
+  height:12px;
+  background:#bbb;
+  border-radius:50%;
+  margin:0 6px;
+  cursor:pointer;
+}
+
+#slide1:checked ~ .navigation label[for="slide1"],
+#slide2:checked ~ .navigation label[for="slide2"],
+#slide3:checked ~ .navigation label[for="slide3"]{
+  background:#0067b8;
+}
+
+.hero-card {
+  background: #ffffff;
+  padding: 48px;
+  max-width: 480px;
+}
+
+.hero-card h1 {
+  font-size: 36px;
+  margin-bottom: 18px;
+}
+
+.hero-card p {
+  font-size: 16px;
+  line-height: 1.6;
+  margin-bottom: 26px;
+  color: #444;
+}
+
+.hero-card a {
+  text-decoration: none;
+  background: var(--ms-blue);
+  color: #ffffff;
+  padding: 10px 20px;
+  font-weight: 600;
+  border-radius: 2px;
+ 
+}
+.hero-card1
+{
+  height:500px;
+  width:500px;
+}
+
+/* ================= QUICK LINKS ================= */
+.quick-links {
+  display: flex;
+  justify-content: center;
+  gap: 90px;
+  padding: 44px 0;
+}
+
+.quick-links div {
+  color: var(--ms-blue);
+  font-weight: 500;
+}
+
+/* ================= PRODUCTS ================= */
+.products {
+  padding: 60px 40px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 28px;
+}
+
+.card {
+  border: 1px solid var(--border);
+}
+
+.card-img {
+  height: 160px;
+  background: #f3f3f3;
+}
+
+.card-content {
+  padding: 20px;
+}
+
+.card-content h3 {
+  font-size: 18px;
+  margin-bottom: 12px;
+}
+
+.card-content p {
+  font-size: 14px;
+  color: var(--text-light);
+  margin-bottom: 14px;
+}
+
+.card-content a {
+  text-decoration: none;
+  color: var(--ms-blue);
+  font-weight: 600;
+  font-size: 14px;
+}
+
+/* ================= FOOTER ================= */
+footer {
+  background: #f2f2f2;
+  padding: 40px;
+  font-size: 12px;
+  color: #616161;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 30px;
+  margin-bottom: 40px;
+}
+
+footer h4 {
+  font-size: 14px;
+  margin-bottom: 14px;
+}
+
+footer a {
+  text-decoration: none;
+  color: #616161;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}

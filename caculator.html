@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Advanced Scientific Calculator</title>
+
+<style>
+body{
+    margin:0;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+    background:linear-gradient(135deg,#1e3c72,#2a5298);
+    font-family:Arial, sans-serif;
+}
+
+.calculator{
+    width:350px;
+    background:#1c1c1c;
+    padding:20px;
+    border-radius:20px;
+    box-shadow:0 15px 30px rgba(0,0,0,0.4);
+}
+
+.display{
+    width:100%;
+    height:70px;
+    background:#000;
+    color:#00ff99;
+    font-size:28px;
+    text-align:right;
+    padding:10px;
+    border-radius:10px;
+    margin-bottom:15px;
+    overflow-x:auto;
+}
+
+.buttons{
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    gap:8px;
+}
+
+button{
+    height:55px;
+    font-size:18px;
+    border:none;
+    border-radius:10px;
+    cursor:pointer;
+    transition:0.2s;
+}
+
+button:hover{opacity:0.8;}
+
+.number{background:#333;color:#fff;}
+.operator{background:#ff9500;color:#fff;}
+.equal{background:#28a745;color:#fff;grid-column:span 2;}
+.clear{background:#dc3545;color:#fff;}
+.func{background:#6f42c1;color:#fff;}
+</style>
+</head>
+
+<body>
+
+<div class="calculator">
+<div id="display" class="display">0</div>
+
+<div class="buttons">
+<button class="clear" onclick="clearDisplay()">C</button>
+<button class="func" onclick="calculateFunc('sqrt')">√</button>
+<button class="func" onclick="calculateFunc('pow')">x²</button>
+<button class="func" onclick="calculateFunc('log')">log</button>
+<button class="operator" onclick="append('/')">÷</button>
+
+<button class="number" onclick="append('7')">7</button>
+<button class="number" onclick="append('8')">8</button>
+<button class="number" onclick="append('9')">9</button>
+<button class="operator" onclick="append('*')">×</button>
+<button class="func" onclick="calculateFunc('sin')">sin</button>
+
+<button class="number" onclick="append('4')">4</button>
+<button class="number" onclick="append('5')">5</button>
+<button class="number" onclick="append('6')">6</button>
+<button class="operator" onclick="append('-')">−</button>
+<button class="func" onclick="calculateFunc('cos')">cos</button>
+
+<button class="number" onclick="append('1')">1</button>
+<button class="number" onclick="append('2')">2</button>
+<button class="number" onclick="append('3')">3</button>
+<button class="operator" onclick="append('+')">+</button>
+<button class="func" onclick="calculateFunc('tan')">tan</button>
+
+<button class="number" onclick="append('0')">0</button>
+<button class="number" onclick="append('.')">.</button>
+<button class="equal" onclick="calculate()">=</button>
+</div>
+</div>
+
+<script>
+let display = document.getElementById("display");
+
+function append(value){
+    if(display.innerText==="0") display.innerText=value;
+    else display.innerText+=value;
+}
+
+function clearDisplay(){
+    display.innerText="0";
+}
+
+function calculate(){
+    try{
+        display.innerText = new Function('return '+ display.innerText)();
+    }catch{
+        display.innerText="Error";
+    }
+}
+
+function calculateFunc(type){
+    let value = parseFloat(display.innerText);
+    if(isNaN(value)) return;
+
+    switch(type){
+        case "sqrt": display.innerText=Math.sqrt(value); break;
+        case "pow": display.innerText=Math.pow(value,2); break;
+        case "log": display.innerText=Math.log10(value); break;
+        case "sin": display.innerText=Math.sin(value*Math.PI/180); break;
+        case "cos": display.innerText=Math.cos(value*Math.PI/180); break;
+        case "tan": display.innerText=Math.tan(value*Math.PI/180); break;
+    }
+}
+
+/* Keyboard Support */
+document.addEventListener("keydown",function(e){
+    if(!isNaN(e.key) || "+-*/.".includes(e.key)){
+        append(e.key);
+    }
+    if(e.key==="Enter") calculate();
+    if(e.key==="Backspace"){
+        display.innerText = display.innerText.slice(0,-1) || "0";
+    }
+    if(e.key==="Escape") clearDisplay();
+});
+</script>
+
+</body>
+</html>
